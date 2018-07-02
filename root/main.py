@@ -79,11 +79,11 @@ def clean_file_and_dispatch_notification(total_failed, completed_tests):
 
   # Create the enclosing (outer) message
   outer = MIMEMultipart( )
-  outer['Subject'] = "ICG Web Test: {0} {1}".format(total_failed, ftext)
+  outer['Subject'] = "CheckPlease: {0} {1}".format(total_failed, ftext)
   outer['To'] = private.notification_address
   outer['From'] = private.mailgun_smtp_login
   outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
-  body = "ICG Web Test has checked the following files and finished with {0} {1}.\n{2}".format(total_failed, ftext.lower( ), tests)
+  body = "CheckPlease has checked the following files and finished with {0} {1}.\n{2}".format(total_failed, ftext.lower( ), tests)
   body = MIMEText(body)   # convert the body to a MIME compatible string
   outer.attach(body)      # attach it to your main message
 
