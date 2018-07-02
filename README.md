@@ -5,8 +5,8 @@ This tool is based on work found in weihanwang/webdriver-python.  My copy reside
 ~~~
 git clone https://github.com/DigitalGrinnell/CheckPlease.git
 cd CheckPlease
-docker build -t CheckPlease .     <-- Build a local image. Takes a couple minutes. Don't forget the period at the end!
-docker-compose run CheckPlease    <-- Run the CheckPlease portion of docker-compose.yml for all /tests/*.yml files.
+docker build -t checkplease .     <-- Build a local image. Takes a couple minutes. Don't forget the period at the end!
+docker-compose run checkplease    <-- Run the CheckPlease portion of docker-compose.yml for all /tests/*.yml files.
 ~~~
 
 You should see some output in your terminal window as the tests run against Digital Grinnell.
@@ -19,22 +19,22 @@ CheckPlease responds to three optional environment variables/settings.
 
 **-e TEST** - You may also run a single .yml file or 'glob' of files by specifying a TEST=*path* environment variable with the 'docker-compose run' command, similar to the following:
 
-    docker-compose run -e TEST='/tests/DISABLED/Google.yml' CheckPlease
+    docker-compose run -e TEST='/tests/DISABLED/Google.yml' checkplease
 
 or
 
-    docker-compose run -e TEST='/tests/DISABLED/Digital*.yml' CheckPlease
+    docker-compose run -e TEST='/tests/DISABLED/Digital*.yml' checkplease
 
 
-Note that when using this option the file(s) specified by TEST must be accessible within the CheckPlease container, as are all files inside the /tests directory and its subordinates.
+Note that when using this option the file(s) specified by TEST must be accessible within the _checkplease_ container, as are all files inside the /tests directory and its subordinates.
 
 **-e BASE_URL** - You may override the base URL specified in the selected YAML file(s) using an environment spec similar to the following:
 
-    docker-compose run -e BASE_URL='https://microsoft.com' CheckPlease
+    docker-compose run -e BASE_URL='https://microsoft.com' checkplease
 
 or
 
-    docker-compose run -e TEST='/tests/digital_grinnell_public.yml' -e BASE_URL='https://isle-dev.localdomain' CheckPlease
+    docker-compose run -e TEST='/tests/digital_grinnell_public.yml' -e BASE_URL='https://isle-dev.localdomain' checkplease
 
 
 The first example would run all /tests/\*.yml test files but with a base URL of 'https://microsoft.com' instead of whatever is specified inside each \*.yml file.
@@ -43,7 +43,7 @@ The second example would run the tests prescribed for Digital Grinnell - Public,
 
 **-e NOTIFY** - You may override the *notification_address* portion of your private.py file, the email address(es) to which failure and/or success notifications are dispatched, using an environment spec similar to the following:
 
-    docker-compose run -e NOTIFY='john@doe.edu, jane@doe.edu' CheckPlease
+    docker-compose run -e NOTIFY='john@doe.edu, jane@doe.edu' checkplease
 
 #### Firefox and Screenshots
 
