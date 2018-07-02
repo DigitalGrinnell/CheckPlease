@@ -2,8 +2,8 @@ version: "3.5"
 
 services:
 
-  CheckPlease:
-    image: CheckPlease
+  checkplease:
+    image: checkplease
     environment:
       RESOLUTION: '1920x1600x24'
     volumes:
